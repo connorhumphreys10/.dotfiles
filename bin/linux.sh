@@ -1,14 +1,16 @@
- #!/bin/bash
-#check operating system
-if uname!="Linux"
+#!/bin/bash
+#check operating system for Linux, if not error message and exit
+VAR=$(uname)
+if $VAR != "Linux"
 	echo "Error Message" >> linuxsetup.log
 	exit
-#create TRASH directory
+fi
+#create TRASH directory if it doesn't exist
 mkdir -p .TRASH
-#rename vimrc file
+#rename vimrc file in home directory and message setup log
 mv .vimrc .bup_vimrc
-echo ".vimrc was renamed .bup_vimrc" >> linuxsetup.log
-#overwrite contents of etc/vimrc
+echo "Current .vimrc file was renamed to .bup_vimrc" >> linuxsetup.log
+#overwrite contents of etc/vimrc to .vimrc file in home directory
 cp etc/vimrc ~/.vimrc
-echo "source ~/.dotfiles/etc/bashrc_custom" >> ~/.bashr:
-
+#add statement to end of .bashrc file
+echo "source ~/.dotfiles/etc/bashrc_custom" >> ~/.bashrc
