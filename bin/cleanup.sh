@@ -1,7 +1,10 @@
 #!/bin/bash
+
 #removing .vimrc file from home directory
-rm ~/.vimrc
-#remove everything in line starting with s from end of .bashrc file
-sed 's/s.*//' ~/.bashrc
+rm -f ~/.vimrc
+
+#remove the line 'source /.dorfiles/bashrc_custom' in bashrc file
+sed -i '/source ~\/\.dotfiles\/bashrc_custom/d' ~/.bashrc
+
 #remove the .TRASH directory from home directory
-rm ~/.TRASH
+rm -rf ~/.TRASH
